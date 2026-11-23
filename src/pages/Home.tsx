@@ -5,7 +5,7 @@ import { portfolioItems } from '../data/finalProject';
 import { lessons } from '../data/lessons';
 import { scenarios } from '../data/scenarios';
 import { useCourse } from '../state/CourseContext';
-import { scenariosExplored } from '../state/progress';
+import { scenariosSolved } from '../state/progress';
 import { clearSavedState } from '../state/storage';
 
 export default function Home() {
@@ -65,7 +65,7 @@ export default function Home() {
 
       <div className="grid-3">
         <div className="stat"><strong>{state.done.length} / {lessons.length}</strong><span>Lessons completed</span></div>
-        <div className="stat"><strong>{scenariosExplored(state)} / {scenarios.length}</strong><span>Safety scenarios explored</span></div>
+        <div className="stat"><strong>{scenariosSolved(state)} / {scenarios.length}</strong><span>Safety scenarios solved</span></div>
         <div className="stat"><strong>{state.portfolio.length} / {portfolioItems.length}</strong><span>Final project milestones</span></div>
       </div>
 
@@ -123,8 +123,10 @@ export default function Home() {
           <h3>How your progress works</h3>
           <p className="small">
             For each lesson, read the material, write a thoughtful reflection, and answer at least 2 of 3 questions
-            correctly. You can revise and try again. You and your parent decide when the final plan is ready; course
-            completion never automatically authorizes a public account.
+            correctly. You can revise and try again. Before your family review, you’ll also solve every Safety Lab
+            scenario, fully research two platforms, check off your portfolio, and draft each part of your family
+            agreement. The Final Project shows what’s left. You and your parent decide when the final plan is ready;
+            course completion never automatically authorizes a public account.
           </p>
           <div className="btn-row">
             <button className="btn btn-small btn-outline" onClick={exportProgress}>Export progress backup</button>

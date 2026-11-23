@@ -27,9 +27,19 @@
   - The original CSS moved unchanged into `src/styles/global.css`.
   - One context and reducer, still saving to `creator-compass-v1` in the version 1 format. Version 1 backups import without conversion.
   - Course data is extracted into typed modules under `src/data/`.
-- The built site can no longer be opened straight from the file system (`file://`), so families use the hosted URL or `pnpm preview`. If offline single-file use is still wanted, consider a single-file build plugin.
+- The course is used from the hosted URL. Offline or single-file use is not needed (owner decision, November 2026).
+
+## Completion criteria (confirmed November 2026)
+
+- A lesson is complete when the reflection has at least 40 characters, the quiz score is at least two out of three, and the learner selects **Complete lesson**.
+- The Final Project shows **Ready to review together** only when all of these are done. It lists each one with progress and a link to the activity:
+  - all eight lessons completed
+  - all seven Safety Lab scenarios solved, meaning the best answer was chosen at least once (retries are unlimited, and choosing a different answer later doesn't undo it)
+  - at least two platforms fully researched in Platform Audit, meaning every checklist item for that platform is checked
+  - all five portfolio milestones checked
+  - all seven family agreement sections drafted (any non-blank text; quality is judged in the parent conversation)
+- The rules live in `readinessItems` in `src/state/progress.ts`. The parent report lists the same items. The parent still makes the account decision.
 
 ## Open decisions
 
 - **First adjustments.** Add the owner’s requested curriculum, interface, or workflow changes here as they come up.
-- **Completion criteria.** Today a lesson requires a reflection of at least 40 characters and a score of at least two out of three, followed by the learner selecting **Complete lesson**. The Final Project displays **Ready to review together** when all eight lessons and five portfolio milestones are marked complete. The readiness calculation does not separately check Safety Lab participation, Platform Audit checkmarks, or agreement text. Confirm which of those activities should be required if the family wants a different readiness rule.

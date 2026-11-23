@@ -1,10 +1,8 @@
 import { Link } from 'react-router';
-import { agreementFields, portfolioItems } from '../data/finalProject';
-import { lessons } from '../data/lessons';
-import { scenarios } from '../data/scenarios';
+import { agreementFields } from '../data/finalProject';
 import { useCourse } from '../state/CourseContext';
 import { pronounLabel } from '../state/pronouns';
-import { isReadyForReview, platformChecksDone, platformChecksTotal, scenariosExplored } from '../state/progress';
+import { platformChecksDone, platformChecksTotal, readinessItems } from '../state/progress';
 
 const EMAIL_PATTERN = /^[^\s@,;?]+@[^\s@,;?]+$/;
 const EMAIL_SUBJECT = 'Creator Compass parent report';
@@ -15,7 +13,8 @@ export default function ParentReport() {
   const profile = state.profile ?? {};
   const parents = Array.isArray(profile.parents) ? profile.parents : [];
   const names = parents.map((parent) => parent?.name).filter(Boolean).join(' and ');
-  const ready = isReadyForReview(state);
+  const readiness = readinessItems(state);
+  const ready = readiness.every((item) => item.complete);
   const pronouns = pronounLabel(state.profile);
   const emailParents = parents.filter((parent) => typeof parent?.email === 'string' && EMAIL_PATTERN.test(parent.email));
 
@@ -33,17 +32,22 @@ export default function ParentReport() {
         {names && <p>Prepared for {names}</p>}
         <p>
           {ready
-            ? 'The lesson and portfolio milestones are marked complete. Review the work together before deciding whether to allow a supervised trial.'
+            ? 'Every readiness step is complete. Review the work together before deciding whether to allow a supervised trial.'
             : 'Course in progress. Review the remaining work together before making an account decision.'}
         </p>
       </div>
       <div className="card">
         <h2>Course progress</h2>
         <ul>
-          <li>{state.done.length} of {lessons.length} lessons completed</li>
-          <li>{scenariosExplored(state)} of {scenarios.length} Safety Lab scenarios explored</li>
-          <li>{platformChecksDone(state)} of {platformChecksTotal} platform audit items checked</li>
-          <li>{state.portfolio.length} of {portfolioItems.length} portfolio milestones marked complete</li>
+          {readiness.map((item) => (
+            <li key={item.key}>
+              {item.complete ? '✓ ' : ''}
+              {item.label}: {item.done} of {item.needed}
+            </li>
+          ))}
+          <li>
+            Platform audit items checked overall: {platformChecksDone(state)} of {platformChecksTotal}
+          </li>
         </ul>
       </div>
       <div className="section">

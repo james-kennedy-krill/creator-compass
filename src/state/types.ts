@@ -30,6 +30,8 @@ export interface CourseState {
   choices: Record<string, Record<string, number>>;
   scores: Record<string, { score: number }>;
   scenarios: Record<string, number>;
+  /** Scenario indices where the best answer has been chosen at least once. Added after version 1; older saves derive it from `scenarios`. */
+  labSolved: number[];
   labIndex: number;
   platform: number;
   platformChecks: Record<string, number[]>;

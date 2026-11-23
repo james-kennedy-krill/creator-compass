@@ -1,7 +1,7 @@
 import { useBackup } from '../components/useBackup';
 import { platformData, platformReviewDate } from '../data/platforms';
 import { useCourse } from '../state/CourseContext';
-import { learnerAge, platformChecksDone, platformChecksTotal } from '../state/progress';
+import { learnerAge, platformChecksDone, platformChecksTotal, platformsResearched, PLATFORMS_REQUIRED } from '../state/progress';
 
 export default function PlatformAudit() {
   const { state, dispatch } = useCourse();
@@ -9,6 +9,8 @@ export default function PlatformAudit() {
   const age = learnerAge(state);
   const p = platformData[state.platform] ?? platformData[0];
   const checked = state.platformChecks[p.name] ?? [];
+  const isComplete = (name: string, count: number) => (state.platformChecks[name]?.length ?? 0) >= count;
+  const researched = platformsResearched(state);
 
   return (
     <>
@@ -35,6 +37,7 @@ export default function PlatformAudit() {
               aria-pressed={p === platform}
               onClick={() => dispatch({ type: 'selectPlatform', index: i })}
             >
+              {isComplete(platform.name, platform.checks.length) && <span aria-label="fully researched">✓ </span>}
               {platform.name}
             </button>
           ))}
@@ -68,6 +71,14 @@ export default function PlatformAudit() {
       <div className="section">
         <div className="card" style={{ background: '#e9e5fa' }}>
           <h3>Your research progress</h3>
+          <p>
+            <b>
+              {Math.min(researched, PLATFORMS_REQUIRED)} of {PLATFORMS_REQUIRED} platforms fully researched
+            </b>{' '}
+            {researched >= PLATFORMS_REQUIRED
+              ? '— that’s enough for your family review. You can keep researching the others.'
+              : '— check every item for at least two platforms before your family review.'}
+          </p>
           <p className="muted small">
             {platformChecksDone(state)} of {platformChecksTotal} investigation items checked across{' '}
             {platformData.length} platforms. Researching a platform does not mean you are allowed to make a public

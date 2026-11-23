@@ -10,6 +10,7 @@ export function initialState(): CourseState {
     choices: {},
     scores: {},
     scenarios: {},
+    labSolved: [],
     labIndex: 0,
     platform: 0,
     platformChecks: {},
