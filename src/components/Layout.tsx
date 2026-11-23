@@ -54,8 +54,8 @@ export default function Layout() {
         <NavLink to="/" className="logo">
           <span className="logo-mark">↗</span>
           <span>
-            <small>Digital creator academy</small>
-            <strong>Creator Compass</strong>
+            <small>Digital Creator Academy</small>
+            <strong>In Frame: Going Public</strong>
           </span>
         </NavLink>
         <div className="desktoplinks">
@@ -107,7 +107,7 @@ export default function Layout() {
         <main id="main">
           <Outlet />
           <div className="footer">
-            Creator Compass is educational, not a substitute for platform rules or professional emergency support.
+            This course is educational, not a substitute for platform rules or professional emergency support.
             Complete this course with a parent or trusted adult. Your responses are saved only in this browser, with no
             accounts, analytics, or uploads. Last safety-links review: November 2026.
           </div>

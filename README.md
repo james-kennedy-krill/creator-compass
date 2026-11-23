@@ -1,6 +1,6 @@
-# Creator Compass — Interactive Teen Creator Safety Course
+# In Frame: Going Public
 
-A complete browser course for an almost-15-year-old who wants to share dance videos publicly, with parent participation. Works on phones, tablets, and computers.
+The first In Frame course from Digital Creator Academy helps teens prepare to share their talents publicly. It covers what to share, how to set boundaries, and how to handle attention, with parent participation. Works on phones, tablets, and computers.
 
 ## Start using it
 

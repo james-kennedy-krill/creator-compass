@@ -12,11 +12,11 @@ export const lessons: Lesson[] = [
     "sections": [
       {
         "title": "Publishing is a handoff",
-        "body": "When you post a dance video publicly, you give other people the chance to watch, copy, screen-record, comment on, remix, or share it. A private account limits the audience, but someone who can see a post may still capture it. Deleting your original doesn't guarantee all copies disappear."
+        "body": "When you post a video of your work publicly, you give other people the chance to watch, copy, screen-record, comment on, remix, or share it. A private account limits the audience, but someone who can see a post may still capture it. Deleting your original doesn't guarantee all copies disappear."
       },
       {
         "title": "The ripple effect",
-        "body": "Picture a dance clip posted on Friday. A friend shares it. Someone from another school sends a screen recording in a group chat. A fan account reposts a shortened version. Each action creates a new audience. Going viral can be exciting, uncomfortable, or both—and you may not control which part of your video travels."
+        "body": "Picture a performance clip posted on Friday. A friend shares it. Someone from another school sends a screen recording in a group chat. A fan account reposts a shortened version. Each action creates a new audience. Going viral can be exciting, uncomfortable, or both—and you may not control which part of your video travels."
       },
       {
         "title": "Future-you gets a vote",
@@ -24,7 +24,7 @@ export const lessons: Lesson[] = [
       }
     ],
     "takeaway": "You can own your creative choices even when you cannot control every copy.",
-    "mission": "Describe three ways a public dance video might reach people you did not intend, and one reason you might decide not to post a video.",
+    "mission": "Describe three ways a public video of your work might reach people you did not intend, and one reason you might decide not to post a video.",
     "questions": [
       {
         "prompt": "What changes when a video becomes public?",
@@ -72,7 +72,7 @@ export const lessons: Lesson[] = [
       },
       {
         "title": "Separate public creator from private person",
-        "body": "Use a creative handle that doesn't include your full name, school, birthday, or location. A public bio can talk about dance styles and goals without saying where you train. Keep your personal friends account separate from any creator presence, and review what those accounts reveal about each other."
+        "body": "Use a creative handle that doesn't include your full name, school, birthday, or location. A public bio can talk about what you create and what you’re working toward without saying where you practice. Keep your personal friends account separate from any creator presence, and review what those accounts reveal about each other."
       },
       {
         "title": "Film like a detective",
@@ -80,12 +80,12 @@ export const lessons: Lesson[] = [
       }
     ],
     "takeaway": "The safest personal detail is often the one you never publish.",
-    "mission": "Invent a fictional dance creator profile. Write a safe username, a two-sentence bio, and five things the profile should never reveal. Do not enter your own identifying information here.",
+    "mission": "Invent a fictional creator profile. Write a safe username, a two-sentence bio, and five things the profile should never reveal. Do not enter your own identifying information here.",
     "questions": [
       {
         "prompt": "Which set of details is most concerning?",
         "options": [
-          "Dance style and a favorite song",
+          "A creative interest and a favorite song",
           "Studio logo, regular class time, and school name",
           "A neutral background and a stage name"
         ],
@@ -103,9 +103,9 @@ export const lessons: Lesson[] = [
         "explanation": "Separate your public creative identity from private details."
       },
       {
-        "prompt": "What should you check before uploading a dance video?",
+        "prompt": "What should you check before uploading a video of your work?",
         "options": [
-          "Only the dance moves",
+          "Only how the video looks",
           "Background, audio, captions, and location clues",
           "Only whether it has enough hashtags"
         ],
@@ -124,7 +124,7 @@ export const lessons: Lesson[] = [
     "sections": [
       {
         "title": "Nice is not the same as safe",
-        "body": "A stranger may sound encouraging or claim to be a dancer, agent, photographer, or brand representative. Their profile, follower count, or professional-looking website does not verify their identity. Trust is earned through independently verifiable information—not praise."
+        "body": "A stranger may sound encouraging or claim to be a fellow creator, agent, photographer, or brand representative. Their profile, follower count, or professional-looking website does not verify their identity. Trust is earned through independently verifiable information—not praise."
       },
       {
         "title": "The warning-sign ladder",
@@ -136,7 +136,7 @@ export const lessons: Lesson[] = [
       }
     ],
     "takeaway": "Attention is not trust, and secrecy is a warning sign.",
-    "mission": "Write a three-sentence response plan for a message offering a dance sponsorship and asking to switch to a private chat. Include how you would verify the opportunity with an adult.",
+    "mission": "Write a three-sentence response plan for a message offering a sponsorship and asking to switch to a private chat. Include how you would verify the opportunity with an adult.",
     "questions": [
       {
         "prompt": "A stranger says “Don’t tell your parents about this opportunity.” You should:",
@@ -176,11 +176,11 @@ export const lessons: Lesson[] = [
     "duration": "25–35 min",
     "title": "Your image. Your boundaries.",
     "subtitle": "Sexualization, unauthorized edits & AI misuse.",
-    "why": "Your dancing is yours. Other people are responsible for how they treat it.",
+    "why": "Other people are responsible for how they treat you and your work.",
     "sections": [
       {
-        "title": "Dance is not an invitation",
-        "body": "Dancing, wearing a performance costume, or feeling proud of your appearance does not invite sexual comments. Unwanted remarks, requests for private content, or requests to alter a routine for someone's gratification are inappropriate. You do not need to defend your choices to strangers."
+        "title": "When comments cross a line",
+        "body": "Sharing your talent does not give anyone permission to sexualize you. Unwanted remarks, requests for private content, or requests to change a performance for someone's gratification are inappropriate. You do not need to defend your choices to strangers."
       },
       {
         "title": "Images can be misused",
@@ -192,12 +192,12 @@ export const lessons: Lesson[] = [
       }
     ],
     "takeaway": "It is never your responsibility to manage an adult stranger’s inappropriate behavior.",
-    "mission": "Write a plan for what you would do if a stranger made a sexual comment about an innocent dance clip or altered your video in a harmful way.",
+    "mission": "Write a plan for what you would do if a stranger made a sexual comment about a video of your work or altered your video in a harmful way.",
     "questions": [
       {
-        "prompt": "Who is responsible for an adult making a sexual comment about a teen dancer?",
+        "prompt": "Who is responsible for an adult making a sexual comment about a teen creator?",
         "options": [
-          "The dancer for posting",
+          "The creator for posting",
           "The adult making the comment",
           "The friends who watched the video"
         ],
@@ -236,18 +236,18 @@ export const lessons: Lesson[] = [
     "sections": [
       {
         "title": "The number is not the meaning",
-        "body": "Views vary with timing, recommendations, trends, luck, and many factors you cannot control. A fantastic dance may reach ten people. A silly clip may reach thousands. Neither number measures your skill, character, body, or value."
+        "body": "Views vary with timing, recommendations, trends, luck, and many factors you cannot control. A video you spent weeks getting right may reach ten people. A silly clip may reach thousands. Neither number measures your skill, character, body, or value."
       },
       {
         "title": "The pressure trap",
-        "body": "When attention feels rewarding, you may be tempted to post more often, imitate trends you dislike, or reveal more personal details. Notice when creating starts feeling like obligation. You can choose a posting schedule, take a break, and keep some dances just for yourself."
+        "body": "When attention feels rewarding, you may be tempted to post more often, imitate trends you dislike, or reveal more personal details. Notice when creating starts feeling like obligation. You can choose a posting schedule, take a break, and keep some of what you make just for yourself."
       },
       {
         "title": "Protect the art",
-        "body": "Choose goals that you can control: learning a move, making a thoughtful edit, trying a new style, collaborating with permission, or enjoying the process. Decide in advance how you’ll respond to harsh criticism and what boundaries will protect school, sleep, and relationships."
+        "body": "Choose goals that you can control: learning a new technique, making a thoughtful edit, trying a new style, collaborating with permission, or enjoying the process. Decide in advance how you’ll respond to harsh criticism and what boundaries will protect school, sleep, and relationships."
       }
     ],
-    "takeaway": "A low-view video does not make you less of a dancer. A viral video does not make you more valuable.",
+    "takeaway": "A low-view video does not make you less talented. A viral video does not make you more valuable.",
     "mission": "Write three non-numerical creative goals. Then explain how you would respond if a video you loved received almost no attention.",
     "questions": [
       {
@@ -265,7 +265,7 @@ export const lessons: Lesson[] = [
         "options": [
           "It failed creatively",
           "You should post something more provocative",
-          "Views cannot measure the value of the dance"
+          "Views cannot measure the quality of your work"
         ],
         "answer": 2,
         "explanation": "Reach is not a reliable measure of your worth or artistry."
@@ -348,7 +348,7 @@ export const lessons: Lesson[] = [
     "sections": [
       {
         "title": "Other people own their choices too",
-        "body": "Ask before posting friends, classmates, or other dancers, even when the video seems harmless. Agree where a collaboration can be shared and whether collaborators can later request removal. Avoid publishing identifiable background people without permission."
+        "body": "Ask before posting friends, classmates, or collaborators, even when the video seems harmless. Agree where a collaboration can be shared and whether collaborators can later request removal. Avoid publishing identifiable background people without permission."
       },
       {
         "title": "Music and choreography matter",
@@ -360,7 +360,7 @@ export const lessons: Lesson[] = [
       }
     ],
     "takeaway": "Respect consent, follow the rules, and protect your future options.",
-    "mission": "Plan three dance videos that could be shared safely. For each, record the location type, who appears, whether consent is needed, and how the music can be used.",
+    "mission": "Plan three videos that show your talent and could be shared safely. For each, record the location type, who appears, whether consent is needed, and whether you have permission to use any music or clips you include.",
     "questions": [
       {
         "prompt": "A friend appears clearly in your video but asks not to be posted. You should:",

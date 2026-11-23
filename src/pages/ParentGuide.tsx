@@ -27,7 +27,7 @@ export default function ParentGuide() {
           <span className="pill">THE APPROACH</span>
           <h3 style={{ marginTop: 17 }}>Curiosity before control</h3>
           <p>
-            Ask what {they} {verb('loves', 'love')} about dancing and what {they} {verb('hopes', 'hope')} sharing will
+            Ask what {they} {verb('loves', 'love')} about creating and what {they} {verb('hopes', 'hope')} sharing will
             feel like. Explore potential benefits honestly, then make the risks discussable. {They} should never need to
             hide a frightening experience to avoid losing your trust.
           </p>

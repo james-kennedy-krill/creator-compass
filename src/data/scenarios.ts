@@ -4,7 +4,7 @@ import type { Scenario } from './types';
 export const scenarios: Scenario[] = [
   {
     "title": "The “talent scout”",
-    "message": "Hey! I run a dance agency. Your videos are amazing. We have a private casting call—send your age, city, and a video in something more revealing. Please keep this between us for now.",
+    "message": "Hey! I’m a talent scout. Your videos are amazing. We have a private casting call—send your age, city, and a video in something more revealing. Please keep this between us for now.",
     "options": [
       "Send the details; the account looks professional.",
       "Stop, do not send private content, and ask a parent to verify the organization independently.",
@@ -14,10 +14,10 @@ export const scenarios: Scenario[] = [
     "why": "Flattery, a request for personal details, a change in content, and secrecy are all red flags. A legitimate opportunity for a minor must be independently verified and involve a trusted adult.",
     "variants": {
       "girl": {
-        "message": "Hey! I run a dance agency. Your videos are amazing. We have a private casting call—send your age, city, and a video in leggings. Please keep this between us for now."
+        "message": "Hey! I’m a talent scout. Your videos are amazing. We have a private casting call—send your age, city, and a video in leggings. Please keep this between us for now."
       },
       "boy": {
-        "message": "Hey! I run a dance agency. Your videos are amazing. We have a private casting call—send your age, city, and a shirtless video. Please keep this between us for now."
+        "message": "Hey! I’m a talent scout. Your videos are amazing. We have a private casting call—send your age, city, and a shirtless video. Please keep this between us for now."
       }
     }
   },
@@ -34,7 +34,7 @@ export const scenarios: Scenario[] = [
   },
   {
     "title": "The comment pile-on",
-    "message": "A harmless dance video gets popular, and several strangers leave comments about your body. One asks for another video filmed from a different angle.",
+    "message": "A video showing a skill you’ve been practicing gets popular, and several strangers leave comments about your body. One asks for another video filmed from a different angle.",
     "options": [
       "Block/report, limit or turn off comments, and tell a parent.",
       "Make the requested video to change the subject.",
@@ -67,7 +67,7 @@ export const scenarios: Scenario[] = [
   },
   {
     "title": "The duet with a friend",
-    "message": "You and a friend made a great dance video together. Your friend says they’re comfortable keeping it in a private group but not posting publicly.",
+    "message": "You and a friend made a video together that you’re both proud of. Your friend says they’re comfortable keeping it in a private group but not posting publicly.",
     "options": [
       "Respect their decision; keep it private or make a version without them.",
       "Post publicly with comments turned off.",
@@ -77,7 +77,7 @@ export const scenarios: Scenario[] = [
     "why": "Consent includes where and how something is shared. A public audience is different from a private one.",
     "variants": {
       "girl": {
-        "message": "You and a friend made a great dance video together. Your friend says she is comfortable keeping it in a private group but not posting publicly.",
+        "message": "You and a friend made a video together that you’re both proud of. Your friend says she is comfortable keeping it in a private group but not posting publicly.",
         "options": [
           "Respect her decision; keep it private or make a version without her.",
           "Post publicly with comments turned off.",
@@ -85,7 +85,7 @@ export const scenarios: Scenario[] = [
         ]
       },
       "boy": {
-        "message": "You and a friend made a great dance video together. Your friend says he is comfortable keeping it in a private group but not posting publicly.",
+        "message": "You and a friend made a video together that you’re both proud of. Your friend says he is comfortable keeping it in a private group but not posting publicly.",
         "options": [
           "Respect his decision; keep it private or make a version without him.",
           "Post publicly with comments turned off.",
