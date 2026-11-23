@@ -54,5 +54,11 @@ export const resources: Resource[] = [
     "description": "Official requirements and teen distinctions.",
     "url": "https://help.snapchat.com/hc/en-us/articles/7012347065876-What-is-a-Public-Profile-on-Snapchat",
     "icon": "SC"
+  },
+  {
+    "name": "FBI: Financially Motivated Sextortion",
+    "description": "How the scam works, why paying doesn’t help, and how to report it (tips.fbi.gov).",
+    "url": "https://www.fbi.gov/how-we-can-help-you/common-frauds-and-scams/sextortion/financially-motivated-sextortion",
+    "icon": "!"
   }
 ];

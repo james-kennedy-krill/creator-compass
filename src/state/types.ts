@@ -6,6 +6,14 @@ export interface ParentContact {
 export interface Profile {
   learnerName?: string;
   birthDate?: string;
+  /** 'she' | 'he' | 'they' | 'name' | 'other' | '' (not shared). See src/state/pronouns.ts. */
+  pronouns?: string;
+  /** Free text when `pronouns` is 'other'. */
+  pronounsOther?: string;
+  /** 'girl' | 'boy' | 'nonbinary' | 'other' | 'no-answer' | '' (not shared). */
+  gender?: string;
+  /** Free text when `gender` is 'other'. */
+  genderOther?: string;
   parents?: ParentContact[];
 }
 

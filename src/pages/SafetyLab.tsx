@@ -1,3 +1,4 @@
+import { audienceFor, scenarioText } from '../data/audience';
 import { scenarios } from '../data/scenarios';
 import { useCourse } from '../state/CourseContext';
 import { scenariosExplored } from '../state/progress';
@@ -7,7 +8,8 @@ const letter = (i: number) => String.fromCharCode(65 + i);
 export default function SafetyLab() {
   const { state, dispatch } = useCourse();
   const i = Math.min(Math.max(0, state.labIndex), scenarios.length - 1);
-  const s = scenarios[i];
+  const scenario = scenarios[i];
+  const s = { ...scenarioText(scenario, audienceFor(state.profile)), correct: scenario.correct };
   const answer = state.scenarios[i];
   const last = i === scenarios.length - 1;
 

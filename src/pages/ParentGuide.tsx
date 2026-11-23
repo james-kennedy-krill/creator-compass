@@ -1,6 +1,13 @@
 import { discussionPrompts, trialBoundaries } from '../data/parentGuide';
+import { useCourse } from '../state/CourseContext';
+import { capitalize, learnerPronouns } from '../state/pronouns';
 
 export default function ParentGuide() {
+  const { state } = useCourse();
+  // Wording follows the learner's pronouns from the course profile (they/them if not shared).
+  const { subject: they, object: them, possessive: their, verb } = learnerPronouns(state.profile);
+  const They = capitalize(they);
+
   return (
     <>
       <div className="detail-head">
@@ -20,9 +27,9 @@ export default function ParentGuide() {
           <span className="pill">THE APPROACH</span>
           <h3 style={{ marginTop: 17 }}>Curiosity before control</h3>
           <p>
-            Ask what she loves about dancing and what she hopes sharing will feel like. Explore potential benefits
-            honestly, then make the risks discussable. She should never need to hide a frightening experience to avoid
-            losing your trust.
+            Ask what {they} {verb('loves', 'love')} about dancing and what {they} {verb('hopes', 'hope')} sharing will
+            feel like. Explore potential benefits honestly, then make the risks discussable. {They} should never need to
+            hide a frightening experience to avoid losing your trust.
           </p>
         </div>
         <div className="card">
@@ -30,7 +37,7 @@ export default function ParentGuide() {
           <h3 style={{ marginTop: 17 }}>Completion ≠ permission</h3>
           <p>
             Even after finishing, the two of you may decide to wait, try private sharing, or approve one age-permitted
-            platform with strict boundaries. Revisit the agreement as her maturity and the platforms change.
+            platform with strict boundaries. Revisit the agreement as {their} maturity and the platforms change.
           </p>
         </div>
       </div>
@@ -41,14 +48,14 @@ export default function ParentGuide() {
           <div>
             <h3>Each week</h3>
             <p className="small">
-              Aim for 1–2 lessons. Let her read, answer, and write first. Then spend 15–20 minutes discussing situations
-              without trying to catch her out.
+              Aim for 1–2 lessons. Let {them} read, answer, and write first. Then spend 15–20 minutes discussing
+              situations without trying to catch {them} out.
             </p>
           </div>
           <div>
             <h3>In the final review</h3>
             <p className="small">
-              Ask her to explain a privacy risk in one of her videos, demonstrate an app setting, identify manipulation
+              Ask {them} to explain a privacy risk in one of {their} videos, demonstrate an app setting, identify manipulation
               tactics, and walk you through the emergency plan.
             </p>
           </div>
@@ -62,7 +69,7 @@ export default function ParentGuide() {
           <div>
             <h3>Agree on support</h3>
             <p className="small">
-              Make help-seeking nonpunitive. Safety comes first if she reports harassment, exploitation, or embarrassing
+              Make help-seeking nonpunitive. Safety comes first if {they} {verb('reports', 'report')} harassment, exploitation, or embarrassing
               mistakes; any later discussion of rules should be separate and measured.
             </p>
           </div>
