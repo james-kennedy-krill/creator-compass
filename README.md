@@ -6,7 +6,7 @@ The first In Frame course from Digital Creator Academy helps teens prepare to sh
 
 1. Open the published site (or run it locally; see below) in a browser such as Chrome, Safari, Edge, or Firefox.
 2. Select **Start the course** or open an activity from the dashboard. Fill in the course profile with a parent or guardian before you continue: your nickname, pronouns, gender, birthday, and a parent or guardian’s name and email. A second parent or guardian is optional.
-3. Complete the eight lessons, reflection exercises, and 3-question quizzes.
+3. Complete the eight lessons. Each has a 3-question knowledge check (retry until every answer is right) followed by a short reflection.
 4. Solve every Safety Lab scenario and fully research at least two platforms in Platform Audit, then build the Final Project and draft every section of the family agreement. The Final Project's readiness checklist shows what's left.
 5. Open the parent report from the Final Project and save it as a PDF using the browser’s print dialog. If you entered a parent email, open a draft and attach the PDF before sending it.
 6. Use **Export progress backup** on the dashboard periodically to preserve the local browser data.

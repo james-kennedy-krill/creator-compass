@@ -121,8 +121,9 @@ export default function Home() {
         <div className="card" style={{ background: '#f0eafa' }}>
           <h3>How your progress works</h3>
           <p className="small">
-            For each lesson, read the material, write a thoughtful reflection, and answer at least 2 of 3 questions
-            correctly. You can revise and try again. Before your family review, you’ll also solve every Safety Lab
+            For each lesson, read the material, get every knowledge check question right, then write a thoughtful
+            reflection. If an answer is wrong, you’ll see which one, but not the right answer. Pick again until you
+            get it. Before your family review, you’ll also solve every Safety Lab
             scenario, fully research two platforms, check off your portfolio, and draft each part of your family
             agreement. The Final Project shows what’s left. You and your parent decide when the final plan is ready;
             course completion never automatically authorizes a public account.
