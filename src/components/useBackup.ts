@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useCourse } from '../state/CourseContext';
 import { exportBackup, parseBackup } from '../state/storage';
+import type { CourseState } from '../state/types';
 import { useToast } from './Toast';
 
 /** Export and import version 1 progress backups. */
@@ -14,7 +15,7 @@ export function useBackup() {
   }, [state, toast]);
 
   const importProgress = useCallback(
-    (onImported?: () => void) => {
+    (onImported?: (imported: CourseState) => void) => {
       const input = document.createElement('input');
       input.type = 'file';
       input.accept = '.json,application/json';
@@ -22,8 +23,9 @@ export function useBackup() {
         const file = input.files?.[0];
         if (!file) return;
         try {
-          dispatch({ type: 'replace', state: parseBackup(await file.text()) });
-          onImported?.();
+          const imported = parseBackup(await file.text());
+          dispatch({ type: 'replace', state: imported });
+          onImported?.(imported);
           toast('Progress imported');
         } catch (error) {
           alert('Could not import: ' + (error instanceof Error ? error.message : String(error)));

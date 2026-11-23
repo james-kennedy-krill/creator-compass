@@ -187,3 +187,14 @@ fieldset {border:0;margin:0;padding:0;min-width:0}
 .sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:750px) {.readiness-list li {grid-template-columns:22px minmax(0,1fr) 44px;padding:12px}.readiness-go {grid-column:2 / -1;justify-self:start;text-align:left}}
 .scenario-head {display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+
+/* Required profile: errors and optional markers */
+.required-note {margin:0 0 -4px}
+.field-error {color:#a33a2f;font-size:13px;font-weight:700;margin:7px 0 0;display:flex;gap:6px}
+.field-error:before {content:"!";flex:0 0 18px;height:18px;border-radius:50%;background:#a33a2f;color:#fff;font-size:12px;font-weight:900;display:grid;place-items:center;margin-top:1px}
+.welcome input[aria-invalid="true"] {border-color:#c0574a;background:#fffaf8}
+.choice-group.has-error .choice-pill {border-color:#d99a90}
+.form-error-summary {background:#fff1ec;border:1px solid #f0c4b8;color:#8f3b30;border-radius:14px;padding:14px 18px;font-weight:700;font-size:14px;margin:0}
+.optional-tag {margin-left:8px;font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#6c7890;background:#ebefeb;border-radius:20px;padding:2px 8px;vertical-align:2px}
+.welcome-links {display:grid;gap:6px}
+.welcome-links p {margin:0}
