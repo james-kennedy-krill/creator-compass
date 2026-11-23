@@ -39,16 +39,16 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="hero-copy">
-          <div className="eyebrow" style={{ color: '#b6d282' }}>THE NEXT CHAPTER STARTS HERE</div>
+          <div className="eyebrow" style={{ color: '#b6d282' }}>THE FIRST IN FRAME COURSE</div>
           <h1>
-            Make art.
+            In Frame:{' '}
             <br />
-            <span>Keep your agency.</span>
+            <span>Going Public</span>
           </h1>
           <p className="lead">
             {state.profile?.learnerName ? `Hi, ${state.profile.learnerName}. ` : ''}
-            You want to put your dancing out into the world. This course helps you understand what that means—and build
-            the judgment to do it with confidence.
+            Ready to share your talent with a wider audience? Practice choosing what goes in the frame, setting
+            who can reach you, and handling the attention if a post takes off.
           </p>
           <div className="btn-row">
             <Link className="btn btn-light" to={`/lessons/${next.id}`}>
@@ -70,9 +70,8 @@ export default function Home() {
       </div>
 
       <div className="note">
-        <b>Welcome to your creative future.</b> This isn't a test of whether you're “good enough” to be online. It's a
-        place to practice decisions, build healthy boundaries, and plan with your parent.{' '}
-        <b>Your mistakes in this course are practice, not failures.</b>
+        <b>Make a plan before you go public.</b> Try out what you’d do if a stranger messages you or if checking
+        views starts taking up your day. Then talk through your plan with your parent.
       </div>
 
       <div className="section-head section">

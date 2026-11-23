@@ -16,7 +16,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     "title": "Three practice videos",
-    "description": "Film and privately review three short dance videos using the pre-publish checklist."
+    "description": "Film and privately review three short videos that show your talent using the pre-publish checklist."
   },
   {
     "title": "Family creator agreement",
@@ -37,7 +37,7 @@ export const auditChecklist: string[] = [
 
 // Agreement answers are keyed by `key`.
 export const agreementFields: AgreementField[] = [
-  { key: 'purpose', label: 'Why I want to share my dance videos' },
+  { key: 'purpose', label: 'Why I want to share my talent' },
   { key: 'identity', label: 'My public profile and identity boundaries' },
   { key: 'posting', label: 'Our filming locations, approval process, and posting schedule' },
   { key: 'interactions', label: 'Rules for comments, DMs, strangers, and offers' },

@@ -143,7 +143,7 @@ function WelcomeForm({ profile }: { profile: Profile | null }) {
       {mode !== 'edit' && (
         <div className="welcome-brand">
           <span className="logo-mark" aria-hidden="true">↗</span>
-          <span>Creator Compass</span>
+          <span>In Frame: Going Public</span>
         </div>
       )}
 

@@ -83,7 +83,7 @@ export function exportBackup(state: CourseState): void {
 export function parseBackup(text: string): CourseState {
   const obj: unknown = JSON.parse(text);
   if (!isObject(obj) || obj.app !== 'Creator Compass' || obj.version !== 1 || !obj.data) {
-    throw new Error('Not a Creator Compass backup');
+    throw new Error('Choose a valid In Frame: Going Public progress backup.');
   }
   const state = mergeSaved(obj.data);
   state.profile ??= {};

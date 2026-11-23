@@ -17,7 +17,7 @@ export const spotlights: Record<number, Variants<Spotlight>> = {
   4: {
     general: {
       title: 'It can happen to anyone',
-      body: 'Sexual comments and requests reach dancers of every gender. Sometimes they’re about bodies, costumes, or camera angles. Sometimes they’re disguised as jokes, dares, or “compliments,” or as pressure to film in less clothing. Whatever form they take, they’re inappropriate. You can block, report, and tell a trusted adult.',
+      body: 'Sexual comments and requests reach creators of every gender. Sometimes they’re about bodies, costumes, or camera angles. Sometimes they’re disguised as jokes, dares, or “compliments,” or as pressure to film in less clothing. Whatever form they take, they’re inappropriate. You can block, report, and tell a trusted adult.',
     },
     girl: {
       title: 'What this can look like',

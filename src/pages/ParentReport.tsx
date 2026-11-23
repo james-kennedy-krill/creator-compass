@@ -5,8 +5,8 @@ import { EMAIL_PATTERN } from '../state/profileRules';
 import { pronounLabel } from '../state/pronouns';
 import { platformChecksDone, platformChecksTotal, readinessItems } from '../state/progress';
 
-const EMAIL_SUBJECT = 'Creator Compass parent report';
-const EMAIL_BODY = 'Hi, I’m sharing my Creator Compass report for us to review together.';
+const EMAIL_SUBJECT = 'In Frame: Going Public | Parent report';
+const EMAIL_BODY = 'Hi, I’m sharing my report for In Frame: Going Public for us to review together.';
 
 export default function ParentReport() {
   const { state } = useCourse();
@@ -21,7 +21,7 @@ export default function ParentReport() {
   return (
     <>
       <div className="detail-head">
-        <div className="eyebrow">CREATOR COMPASS</div>
+        <div className="eyebrow">In Frame: Going Public</div>
         <h1>Parent report</h1>
         {profile.learnerName && (
           <p className="lead">

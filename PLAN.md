@@ -2,7 +2,9 @@
 
 ## Confirmed
 
-- The course prepares one teenage dancer to make safer decisions about sharing dance videos publicly. The family requires completion before account creation, and the parent decides whether to permit a supervised trial.
+- Digital Creator Academy is the parent brand. **In Frame: Going Public** is the first In Frame course and introduces sharing your talent publicly, choosing what to reveal, and managing attention. Future courses can use the In Frame title format.
+
+- The course helps teens make safer decisions about sharing their talents publicly. In the family this course was designed for, the parent requires completion before account creation and decides whether to permit a supervised trial.
 - The course is a React + TypeScript app (Vite, pnpm, React Router hash routing). It includes eight lessons, seven Safety Lab scenarios, a four-platform audit, a Final Project with a practice-video checklist and family agreement, a Parent Guide, and resources.
 
 ## Personalization
