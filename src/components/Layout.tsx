@@ -3,6 +3,7 @@ import { Navigate, NavLink, Outlet, useLocation } from 'react-router';
 import { lessons } from '../data/lessons';
 import { useCourse } from '../state/CourseContext';
 import { lessonPercent } from '../state/progress';
+import { isProfileComplete } from '../state/profileRules';
 
 const navClass = ({ isActive }: { isActive: boolean }) => `navitem${isActive ? ' active' : ''}`;
 
@@ -14,6 +15,9 @@ function NavItem({ to, icon, children }: { to: string; icon: string; children: s
     </NavLink>
   );
 }
+
+/** Pages a learner can open before finishing the course profile. */
+const OPEN_WITHOUT_PROFILE = new Set(['/', '/welcome', '/resources', '/parent']);
 
 const mobileLinks: [string, string][] = [
   ['/', 'Lessons'],
@@ -32,13 +36,17 @@ export default function Layout() {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [pathname]);
 
-  // The first time a learner opens an activity, offer the profile step and
-  // return them to that activity afterwards.
-  if (state.profile === null && pathname !== '/' && pathname !== '/welcome') {
+  // The course profile is required before any part of the course (owner
+  // decision, November 2026). The dashboard stays open so new visitors can see
+  // what the course is, and help pages stay open so urgent resources and parent
+  // guidance are always reachable. Every other route shows the profile step,
+  // then returns the learner to where they were headed.
+  const profileComplete = isProfileComplete(state.profile);
+  if (!profileComplete && !OPEN_WITHOUT_PROFILE.has(pathname)) {
     return <Navigate to="/welcome" replace state={{ from: pathname }} />;
   }
 
-  const onboarding = pathname === '/welcome' && state.profile === null;
+  const onboarding = pathname === '/welcome' && !profileComplete;
 
   return (
     <div className={`shell${onboarding ? ' onboarding' : ''}`}>

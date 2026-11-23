@@ -7,7 +7,8 @@
 
 ## Personalization
 
-- The dashboard is the entry point. The first time a learner opens a course activity, the profile step offers an optional nickname, pronouns, gender, date of birth, and contact details for up to two parents or guardians. Every field is optional and stays on the device.
+- The dashboard is the entry point and stays open before setup, so a new visitor can see what the course is. Any way into the course (lessons, Safety Lab, Platform Audit, Final Project, parent report) shows the profile step until it is complete, then continues to where the learner was headed. Resources and the Parent Guide stay open so urgent help and parent guidance are always reachable.
+- **The course profile is required (owner decision, November 2026).** It asks for a nickname, pronouns, gender (“Prefer not to say” counts as an answer), date of birth, and one parent or guardian’s name and email. A second parent or guardian is optional. There is no skip or clear option. Existing learners with a skipped or partial profile keep their progress and are asked to finish setup, and a backup with an incomplete profile opens the same finish-setup step. The rules live in `src/state/profileRules.ts`. All details stay on the device.
 - The profile personalizes the dashboard greeting and the age prompt in Platform Audit. Pronouns set the Parent Guide's third-person wording and appear on the parent report next to the learner's name.
   - With no pronouns shared, the wording uses they/them.
   - "Just use my name," or custom pronouns, use the learner's name instead (they/them if no name is given).

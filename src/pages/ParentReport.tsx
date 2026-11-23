@@ -1,10 +1,10 @@
 import { Link } from 'react-router';
 import { agreementFields } from '../data/finalProject';
 import { useCourse } from '../state/CourseContext';
+import { EMAIL_PATTERN } from '../state/profileRules';
 import { pronounLabel } from '../state/pronouns';
 import { platformChecksDone, platformChecksTotal, readinessItems } from '../state/progress';
 
-const EMAIL_PATTERN = /^[^\s@,;?]+@[^\s@,;?]+$/;
 const EMAIL_SUBJECT = 'Creator Compass parent report';
 const EMAIL_BODY = 'Hi, I’m sharing my Creator Compass report for us to review together.';
 
