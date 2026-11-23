@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useReducer, useRef, type ReactNode } from 'react';
+import { scenarios } from '../data/scenarios';
 import { initialState, loadState, saveState } from './storage';
 import type { CourseState, Profile } from './types';
 
@@ -43,8 +44,14 @@ function reducer(state: CourseState, action: CourseAction): CourseState {
       return { ...state, done: [...state.done, action.lessonId].sort((a, b) => a - b) };
     case 'setReflection':
       return { ...state, reflections: { ...state.reflections, [action.lessonId]: action.text } };
-    case 'answerScenario':
-      return { ...state, scenarios: { ...state.scenarios, [action.index]: action.choice } };
+    case 'answerScenario': {
+      const solved = scenarios[action.index]?.correct === action.choice;
+      return {
+        ...state,
+        scenarios: { ...state.scenarios, [action.index]: action.choice },
+        labSolved: solved ? toggle(state.labSolved, action.index, true) : state.labSolved,
+      };
+    }
     case 'labStep':
       return { ...state, labIndex: action.index };
     case 'selectPlatform':

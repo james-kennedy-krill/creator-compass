@@ -1,7 +1,7 @@
 import { audienceFor, scenarioText } from '../data/audience';
 import { scenarios } from '../data/scenarios';
 import { useCourse } from '../state/CourseContext';
-import { scenariosExplored } from '../state/progress';
+import { scenariosSolved } from '../state/progress';
 
 const letter = (i: number) => String.fromCharCode(65 + i);
 
@@ -12,6 +12,7 @@ export default function SafetyLab() {
   const s = { ...scenarioText(scenario, audienceFor(state.profile)), correct: scenario.correct };
   const answer = state.scenarios[i];
   const last = i === scenarios.length - 1;
+  const solved = state.labSolved.includes(i) || answer === s.correct;
 
   return (
     <>
@@ -22,10 +23,16 @@ export default function SafetyLab() {
           The internet doesn't give you multiple-choice questions. Here, you get a chance to practice before a difficult
           situation happens.
         </p>
-        <span className="pill">{scenariosExplored(state)} / {scenarios.length} scenarios explored</span>
+        <span className="pill">{scenariosSolved(state)} / {scenarios.length} scenarios solved</span>
+        <p className="small muted" style={{ marginTop: 12 }}>
+          A scenario counts as solved once you choose the best answer. Try as many times as you like.
+        </p>
       </div>
       <div className="lab-panel">
-        <div className="scenario-num">SCENARIO {i + 1} OF {scenarios.length}</div>
+        <div className="scenario-head">
+          <div className="scenario-num">SCENARIO {i + 1} OF {scenarios.length}</div>
+          {solved && <span className="pill teal">✓ Solved</span>}
+        </div>
         <h2 style={{ marginTop: 9 }}>{s.title}</h2>
         <div className="scenario-msg">“{s.message}”</div>
         <h3>What would you do?</h3>
@@ -45,6 +52,9 @@ export default function SafetyLab() {
           <div className={`feedback${answer === s.correct ? '' : ' warn'}`}>
             <b>{answer === s.correct ? 'Strong choice.' : `A better approach is option ${letter(s.correct)}.`}</b>
             <p style={{ margin: '7px 0 0' }}>{s.why}</p>
+            {answer !== s.correct && !solved && (
+              <p style={{ margin: '7px 0 0' }}>Choose option {letter(s.correct)} to mark this scenario solved.</p>
+            )}
           </div>
         )}
         <hr className="divider" />

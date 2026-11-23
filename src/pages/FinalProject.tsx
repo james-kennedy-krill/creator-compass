@@ -6,13 +6,15 @@ import { agreementFields, auditChecklist, portfolioItems } from '../data/finalPr
 import { lessons } from '../data/lessons';
 import { scenarios } from '../data/scenarios';
 import { useCourse } from '../state/CourseContext';
-import { isReadyForReview, scenariosExplored } from '../state/progress';
+import { readinessItems, scenariosSolved } from '../state/progress';
 
 export default function FinalProject() {
   const { state, dispatch } = useCourse();
   const { exportProgress } = useBackup();
   const toast = useToast();
-  const ready = isReadyForReview(state);
+  const readiness = readinessItems(state);
+  const ready = readiness.every((item) => item.complete);
+  const remaining = readiness.filter((item) => !item.complete).length;
   const videoReviewDone = state.videoChecks.length === auditChecklist.length;
 
   return (
@@ -27,11 +29,11 @@ export default function FinalProject() {
       </div>
       <div className="grid-3">
         <div className="stat"><strong>{state.done.length}/{lessons.length}</strong><span>Lessons</span></div>
-        <div className="stat"><strong>{scenariosExplored(state)}/{scenarios.length}</strong><span>Practice scenarios</span></div>
+        <div className="stat"><strong>{scenariosSolved(state)}/{scenarios.length}</strong><span>Scenarios solved</span></div>
         <div className="stat"><strong>{state.portfolio.length}/{portfolioItems.length}</strong><span>Portfolio milestones</span></div>
       </div>
 
-      <div className="section"><h2>01 / Creator portfolio</h2></div>
+      <div className="section" id="portfolio"><h2>01 / Creator portfolio</h2></div>
       <div className="card">
         {portfolioItems.map((item, i) => (
           <label className="checkline" key={i}>
@@ -86,11 +88,11 @@ export default function FinalProject() {
         </div>
       </div>
 
-      <div className="section">
+      <div className="section" id="agreement">
         <h2>03 / Our family creator agreement</h2>
         <p className="muted">
-          Draft your proposed boundaries. Your parent can discuss and revise them with you. Avoid typing sensitive
-          contact details here.
+          Draft your proposed boundaries in every section. They don’t need to be perfect; your parent can discuss and
+          revise them with you. Avoid typing sensitive contact details here.
         </p>
       </div>
       <div className="agreement">
@@ -117,9 +119,32 @@ export default function FinalProject() {
           <h2 style={{ marginTop: 10 }}>{ready ? 'Ready to review together.' : 'Learning first. Conversation next.'}</h2>
           <p>
             {ready
-              ? 'You have checked the learning and portfolio milestones. Sit down together, discuss the agreement and actual platform rules, and decide whether a time-limited supervised trial is appropriate.'
-              : 'Finish all eight lessons and five portfolio milestones before your final review. A parent should review the substance—not just the check marks.'}
+              ? 'You’ve finished everything on the list. Sit down together, discuss the agreement and actual platform rules, and decide whether a time-limited supervised trial is appropriate.'
+              : `${remaining} ${remaining === 1 ? 'step is' : 'steps are'} left before your family review. A parent should review the substance—not just the check marks.`}
           </p>
+          <ul className="readiness-list">
+            {readiness.map((item) => (
+              <li key={item.key} className={item.complete ? 'complete' : ''}>
+                <span className="readiness-mark" aria-hidden="true">{item.complete ? '✓' : ''}</span>
+                <span className="readiness-label">
+                  {item.label}
+                  <span className="sr-only">{item.complete ? ' (complete)' : ' (not complete yet)'}</span>
+                </span>
+                <span className="readiness-count">{item.done} / {item.needed}</span>
+                {!item.complete && (item.to.startsWith('/') ? (
+                  <Link className="readiness-go" to={item.to}>Go<span className="sr-only"> to {item.label.toLowerCase()}</span> →</Link>
+                ) : (
+                  <button
+                    type="button"
+                    className="link-button readiness-go"
+                    onClick={() => document.getElementById(item.to)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                  >
+                    Go<span className="sr-only"> to {item.label.toLowerCase()}</span> →
+                  </button>
+                ))}
+              </li>
+            ))}
+          </ul>
           <Link className="btn btn-outline btn-small" to="/parent">Open parent guide ↗</Link>
         </div>
       </div>

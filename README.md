@@ -7,7 +7,7 @@ A complete browser course for an almost-15-year-old who wants to share dance vid
 1. Open the published site (or run it locally; see below) in a browser such as Chrome, Safari, Edge, or Firefox.
 2. Select **Start the course** or open an activity from the dashboard. Set up the optional course profile with a parent or guardian, or continue without one.
 3. Complete the eight lessons, reflection exercises, and 3-question quizzes.
-4. Visit Safety Lab and Platform Audit, then build the Final Project and family agreement.
+4. Solve every Safety Lab scenario and fully research at least two platforms in Platform Audit, then build the Final Project and draft every section of the family agreement. The Final Project's readiness checklist shows what's left.
 5. Open the parent report from the Final Project and save it as a PDF using the browser’s print dialog. If you entered a parent email, open a draft and attach the PDF before sending it.
 6. Use **Export progress backup** on the dashboard periodically to preserve the local browser data.
 
@@ -47,7 +47,7 @@ Pages use hash URLs such as `#/lessons/3`. Older links like `#lesson-3` and `#ho
 
 Pushing to `main` runs the GitHub Pages workflow. It installs dependencies, runs `pnpm build`, and publishes `dist/`. Any static host (Vercel, Netlify, Cloudflare Pages) works the same way: build with `pnpm build` and serve `dist/`. The build uses relative paths, so it works from a subfolder. No server, API keys or environment variables are needed.
 
-The built site has to be served over HTTP. Opening `dist/index.html` directly from disk will not work. Use `pnpm preview` for local offline use.
+The built site has to be served over HTTP. Opening `dist/index.html` directly from disk will not work; use `pnpm preview` to view a build locally.
 
 **Important:** Hosting the site does *not* upload your teen's saved lesson answers to the server. Browser storage belongs to each device and website origin. Before switching to a new address, export a backup and import it at the new location.
 
