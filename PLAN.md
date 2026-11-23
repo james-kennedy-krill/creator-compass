@@ -3,7 +3,7 @@
 ## Confirmed
 
 - The course prepares one teenage dancer to make safer decisions about sharing dance videos publicly. The family requires completion before account creation, and the parent decides whether to permit a supervised trial.
-- The course runs from `index.html`. It includes eight lessons, six Safety Lab scenarios, a four-platform audit, a Final Project with a practice-video checklist and family agreement, a Parent Guide, and resources.
+- The course is a React + TypeScript app (Vite, pnpm, React Router hash routing). It includes eight lessons, six Safety Lab scenarios, a four-platform audit, a Final Project with a practice-video checklist and family agreement, a Parent Guide, and resources.
 
 ## Personalization
 
@@ -13,8 +13,13 @@
 
 ## Development tooling
 
-- Use pnpm and Vite for local development, builds, and build previews. GitHub Pages deploys the root static HTML.
-- Consider a React migration if the course grows enough to benefit from reusable components. If we proceed, preserve existing saved progress and version 1 backups, and update GitHub Pages to publish the Vite build output.
+- Use pnpm and Vite for local development, builds, and build previews. GitHub Pages runs `pnpm build` and publishes `dist/`.
+- **React migration (confirmed November 2026, branch `feature/react-migration`).** The course was ported from the single-file `index.html` to React 19 + TypeScript with these choices:
+  - React Router's hash router. Old hashes such as `#home` and `#lesson-3` redirect to `#/` and `#/lessons/3`.
+  - The original CSS moved unchanged into `src/styles/global.css`.
+  - One context and reducer, still saving to `creator-compass-v1` in the version 1 format. Version 1 backups import without conversion.
+  - Course data is extracted into typed modules under `src/data/`.
+- The built site can no longer be opened straight from the file system (`file://`), so families use the hosted URL or `pnpm preview`. If offline single-file use is still wanted, consider a single-file build plugin.
 
 ## Open decisions
 
