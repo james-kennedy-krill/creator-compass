@@ -3,6 +3,7 @@ import { agreementFields, portfolioItems } from '../data/finalProject';
 import { lessons } from '../data/lessons';
 import { scenarios } from '../data/scenarios';
 import { useCourse } from '../state/CourseContext';
+import { pronounLabel } from '../state/pronouns';
 import { isReadyForReview, platformChecksDone, platformChecksTotal, scenariosExplored } from '../state/progress';
 
 const EMAIL_PATTERN = /^[^\s@,;?]+@[^\s@,;?]+$/;
@@ -15,6 +16,7 @@ export default function ParentReport() {
   const parents = Array.isArray(profile.parents) ? profile.parents : [];
   const names = parents.map((parent) => parent?.name).filter(Boolean).join(' and ');
   const ready = isReadyForReview(state);
+  const pronouns = pronounLabel(state.profile);
   const emailParents = parents.filter((parent) => typeof parent?.email === 'string' && EMAIL_PATTERN.test(parent.email));
 
   return (
@@ -22,7 +24,12 @@ export default function ParentReport() {
       <div className="detail-head">
         <div className="eyebrow">CREATOR COMPASS</div>
         <h1>Parent report</h1>
-        {profile.learnerName && <p className="lead">Prepared by {profile.learnerName}</p>}
+        {profile.learnerName && (
+          <p className="lead">
+            Prepared by {profile.learnerName}
+            {pronouns && ` (${pronouns})`}
+          </p>
+        )}
         {names && <p>Prepared for {names}</p>}
         <p>
           {ready

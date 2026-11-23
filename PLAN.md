@@ -3,11 +3,19 @@
 ## Confirmed
 
 - The course prepares one teenage dancer to make safer decisions about sharing dance videos publicly. The family requires completion before account creation, and the parent decides whether to permit a supervised trial.
-- The course is a React + TypeScript app (Vite, pnpm, React Router hash routing). It includes eight lessons, six Safety Lab scenarios, a four-platform audit, a Final Project with a practice-video checklist and family agreement, a Parent Guide, and resources.
+- The course is a React + TypeScript app (Vite, pnpm, React Router hash routing). It includes eight lessons, seven Safety Lab scenarios, a four-platform audit, a Final Project with a practice-video checklist and family agreement, a Parent Guide, and resources.
 
 ## Personalization
 
-- The dashboard is the entry point. The first time a learner opens a course activity, the profile step offers an optional learner nickname, date of birth, and contact details for up to two parents or guardians. The profile personalizes the dashboard greeting and the age prompt in Platform Audit.
+- The dashboard is the entry point. The first time a learner opens a course activity, the profile step offers an optional nickname, pronouns, gender, date of birth, and contact details for up to two parents or guardians. Every field is optional and stays on the device.
+- The profile personalizes the dashboard greeting and the age prompt in Platform Audit. Pronouns set the Parent Guide's third-person wording and appear on the parent report next to the learner's name.
+  - With no pronouns shared, the wording uses they/them.
+  - "Just use my name," or custom pronouns, use the learner's name instead (they/them if no name is given).
+  - Teen-facing pages address the learner as "you."
+- **Gender-aware content (confirmed November 2026).** The gender answer picks examples and emphasis, in `src/data/audience.ts`. Girl and Boy get tailored variants. Non-binary, Something else, Prefer not to say, and unanswered all get the general version, which covers every emphasis. Pronouns never drive content. Variants change framing and examples only: every learner sees every lesson, scenario, and safety step, completion requirements are the same, and scenario variants keep their options in the same order so saved answers still match. Gender does not appear on the parent report.
+  - Lesson 4 and Lesson 8 show a Spotlight card (`src/data/spotlights.ts`). Lesson 4 covers sexualized comments, including that boys receive them too. Lesson 8 covers financial sextortion, which targets teen boys most, checked against FBI and NCMEC guidance in November 2026.
+  - Safety Lab scenario 7, "The fast crush," covers how financial sextortion starts and is shown to everyone. Scenario 1 swaps the clothing request in its example, and scenario 6 matches the friend's pronouns to the learner's gender (they/them in the general version).
+  - Resources include the FBI's financially motivated sextortion page.
 - The Final Project links to a printable parent report with course progress and the family creator agreement. Families can save it as a PDF and attach it to an email draft.
 - Before expanding beyond the current local-only design for public use, decide whether families need hosted accounts or automated delivery and what personal information those features would actually require.
 

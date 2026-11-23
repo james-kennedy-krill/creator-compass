@@ -4,14 +4,22 @@ import type { Scenario } from './types';
 export const scenarios: Scenario[] = [
   {
     "title": "The “talent scout”",
-    "message": "Hey! I run a dance agency. Your videos are amazing. We have a private casting call—send your age, city, and a video in leggings. Please keep this between us for now.",
+    "message": "Hey! I run a dance agency. Your videos are amazing. We have a private casting call—send your age, city, and a video in something more revealing. Please keep this between us for now.",
     "options": [
       "Send the details; the account looks professional.",
       "Stop, do not send private content, and ask a parent to verify the organization independently.",
       "Move to another app to ask for more details."
     ],
     "correct": 1,
-    "why": "Flattery, a request for personal details, a change in content, and secrecy are all red flags. A legitimate opportunity for a minor must be independently verified and involve a trusted adult."
+    "why": "Flattery, a request for personal details, a change in content, and secrecy are all red flags. A legitimate opportunity for a minor must be independently verified and involve a trusted adult.",
+    "variants": {
+      "girl": {
+        "message": "Hey! I run a dance agency. Your videos are amazing. We have a private casting call—send your age, city, and a video in leggings. Please keep this between us for now."
+      },
+      "boy": {
+        "message": "Hey! I run a dance agency. Your videos are amazing. We have a private casting call—send your age, city, and a shirtless video. Please keep this between us for now."
+      }
+    }
   },
   {
     "title": "The background clue",
@@ -33,7 +41,7 @@ export const scenarios: Scenario[] = [
       "Argue with every commenter."
     ],
     "correct": 0,
-    "why": "She is never obligated to engage with or accommodate sexualized attention. Use safety controls and trusted support."
+    "why": "You are never obligated to engage with or accommodate sexualized attention. Use safety controls and trusted support."
   },
   {
     "title": "A video goes viral",
@@ -59,13 +67,61 @@ export const scenarios: Scenario[] = [
   },
   {
     "title": "The duet with a friend",
-    "message": "You and a friend made a great dance video together. Your friend says she is comfortable keeping it in a private group but not posting publicly.",
+    "message": "You and a friend made a great dance video together. Your friend says they’re comfortable keeping it in a private group but not posting publicly.",
     "options": [
-      "Respect her decision; keep it private or make a version without her.",
+      "Respect their decision; keep it private or make a version without them.",
       "Post publicly with comments turned off.",
-      "Post and remove it later if she complains."
+      "Post and remove it later if they complain."
     ],
     "correct": 0,
-    "why": "Consent includes where and how something is shared. A public audience is different from a private one."
+    "why": "Consent includes where and how something is shared. A public audience is different from a private one.",
+    "variants": {
+      "girl": {
+        "message": "You and a friend made a great dance video together. Your friend says she is comfortable keeping it in a private group but not posting publicly.",
+        "options": [
+          "Respect her decision; keep it private or make a version without her.",
+          "Post publicly with comments turned off.",
+          "Post and remove it later if she complains."
+        ]
+      },
+      "boy": {
+        "message": "You and a friend made a great dance video together. Your friend says he is comfortable keeping it in a private group but not posting publicly.",
+        "options": [
+          "Respect his decision; keep it private or make a version without him.",
+          "Post publicly with comments turned off.",
+          "Post and remove it later if he complains."
+        ]
+      }
+    }
+  },
+  {
+    "title": "The fast “crush”",
+    "message": "An account you don’t know—a cute teen who says they go to a nearby school—has been flirting with you all evening. They sent a private photo first and keep asking for one back. “It’s only fair,” they say.",
+    "options": [
+      "Send one back; they sent theirs first.",
+      "Stop replying, block and report the account, and tell a trusted adult.",
+      "Send a photo that doesn’t show your face."
+    ],
+    "correct": 1,
+    "why": "This is how financial sextortion often starts: fast flirting, a photo sent first, and pressure to “make it even.” That first photo is usually stolen. Once an image is sent, threats and demands for money typically follow. You can simply leave. Block, report, and talk to someone you trust. If you’ve already sent something, don’t pay. Keep the messages and get help right away; you are not in trouble.",
+    "variants": {
+      "girl": {
+        "message": "A guy you don’t know—his profile says he’s 16 and goes to a nearby school—has been flirting with you all evening. He sent a private photo first and keeps asking for one back. “It’s only fair,” he says.",
+        "options": [
+          "Send one back; he sent his first.",
+          "Stop replying, block and report the account, and tell a trusted adult.",
+          "Send a photo that doesn’t show your face."
+        ]
+      },
+      "boy": {
+        "message": "A girl you don’t know—her profile says she’s 16 and goes to a nearby school—has been flirting with you all evening. She sent a private photo first and keeps asking for one back. “It’s only fair,” she says.",
+        "options": [
+          "Send one back; she sent hers first.",
+          "Stop replying, block and report the account, and tell a trusted adult.",
+          "Send a photo that doesn’t show your face."
+        ],
+        "why": "This is how financial sextortion usually starts, and it targets teen boys more than anyone else: fast flirting, a photo sent first, and pressure to “make it even.” That first photo is usually stolen, and the “girl” is often an adult scammer. Once an image is sent, threats and demands for money typically follow. You can simply leave. Block, report, and talk to someone you trust. If you’ve already sent something, don’t pay. Keep the messages and get help right away; you are not in trouble."
+      }
+    }
   }
 ];

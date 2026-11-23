@@ -115,3 +115,61 @@ dialog::backdrop {background:#121b3199}
 .onboarding .sidebar,.onboarding .topbar {display:none}
 .report-text {white-space:pre-wrap;overflow-wrap:anywhere}
 @media print {body {background:white}.sidebar,.topbar,.btn,.footer,.topnav-mobile,.report-actions {display:none!important}.shell{display:block}main{max-width:100%;padding:0}.card,.story-card,.quiz,.agreement{break-inside:avoid;box-shadow:none}.hero{color:black;background:white}.hero h1{color:black}.hero-art{display:none}}
+
+/* Welcome / course profile */
+.welcome {max-width:780px}
+.welcome-brand {display:flex;align-items:center;gap:11px;font-weight:900;font-size:17px;letter-spacing:-.4px;margin-bottom:28px}
+.welcome-brand .logo-mark {height:36px;width:36px;font-size:20px;border-radius:11px}
+.welcome .detail-head {margin-bottom:26px}
+.welcome-promises {list-style:none;padding:0;margin:18px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.welcome-promises li {background:#e8f0e1;color:#2f5136;border-radius:30px;padding:6px 12px;font-size:13px;font-weight:780}
+.welcome-form {display:grid;gap:18px}
+fieldset {border:0;margin:0;padding:0;min-width:0}
+.form-section {padding:25px 25px 27px}
+.form-section > legend {float:left;width:100%;padding:0;margin:0 0 8px}
+.form-section > legend + * {clear:both}
+.form-section .prompt-label {font-size:15px;color:var(--ink);margin:20px 0 2px}
+.field-hint {font-size:13px;color:var(--muted);margin:0 0 9px;max-width:600px}
+.section-intro {font-size:14px;color:#40516a;margin:14px 0 18px;max-width:640px}
+.input-date {max-width:260px}
+.guardian {position:relative;background:#f7f8f5;border:1px solid var(--line);border-radius:15px;padding:16px 18px 18px;margin-top:12px}
+.guardian > legend {float:left;width:100%;padding:0 72px 0 0;font-weight:850;font-size:15px}
+.guardian > legend + * {clear:both}
+.guardian .prompt-label {font-size:13px;color:#495970;margin:12px 0 6px}
+.guardian-fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px;clear:both}
+.guardian-remove {position:absolute;top:15px;right:18px}
+.add-guardian {margin-top:12px;width:100%;border:1.5px dashed #b9c1c9;background:transparent;border-radius:15px;padding:14px;font-weight:780;color:#3b4a63;text-align:center}
+.add-guardian span {margin-right:6px}
+.add-guardian:hover {border-color:#7860c5;background:#f8f6ff;color:#4c3982}
+.privacy-note {background:#f1eafb;border-radius:16px;padding:18px 22px;color:#40315f;font-size:14px}
+.privacy-note ul {margin:8px 0 0;padding-left:19px;line-height:1.7}
+.welcome-actions {margin-top:4px}
+.welcome-import {margin:0}
+.link-button {background:none;border:0;padding:0;color:#334f8e;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.link-button:hover {color:#1c315e}
+.btn-danger-outline {color:#963b36;border-color:#e3c3bf}
+.welcome input::placeholder {color:#9aa3b0}
+@media(max-width:750px) {.welcome-brand{margin-bottom:20px}.form-section{padding:20px}.guardian{padding:14px 14px 16px}.guardian-fields{grid-template-columns:1fr}.input-date{max-width:none}.welcome-actions .btn{flex:1 1 auto}}
+.choice-group > legend {float:left;width:100%;padding:0;margin:20px 0 2px}
+.choice-group > legend + * {clear:both}
+.choice-pills {display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.choice-pill {position:relative;display:inline-flex;align-items:center;border:1px solid #ccd3d8;background:#fff;border-radius:30px;padding:8px 14px;font-size:14px;font-weight:720;color:#37415a;cursor:pointer;transition:background .12s,border-color .12s}
+.choice-pill:hover {border-color:#a39ddc;background:#f8f6ff}
+.choice-pill input {position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.choice-pill.selected {background:var(--navy);border-color:var(--navy);color:var(--lime)}
+.choice-pill:has(input:focus-visible) {outline:3px solid #8757d7;outline-offset:3px}
+.choice-clear {margin-left:4px}
+.choice-other {max-width:360px}
+.choice-other .prompt-label {font-size:13px;color:#495970;margin:12px 0 6px}
+.birthday-row {display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.birthday-row .input-date {flex:0 1 260px}
+.age-preview {margin:0;font-size:14px;font-weight:700;color:#40516a;min-height:24px}
+.age-preview.ok {background:#e8f0e1;color:#2f5136;border-radius:30px;padding:6px 14px}
+.age-preview.ok strong {font-size:17px}
+.age-preview.warn {color:#8f4b2f}
+@media(max-width:750px) {.birthday-row .input-date {flex:1 1 100%}}
+.spotlight {background:#fff6ed;border:1px solid #f4d9c4;border-radius:20px;padding:24px 28px;margin-bottom:18px;color:#5b3523}
+.spotlight .eyebrow {color:#a1543a}
+.spotlight h3 {margin:10px 0 10px;color:#3d2418}
+.spotlight p {margin:0}
+@media(max-width:750px) {.spotlight{padding:20px}}

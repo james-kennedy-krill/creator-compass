@@ -1,7 +1,9 @@
 import { useRef } from 'react';
 import { Link, Navigate, useParams } from 'react-router';
 import { useToast } from '../components/Toast';
+import { audienceFor, pick } from '../data/audience';
 import { lessons } from '../data/lessons';
+import { spotlights } from '../data/spotlights';
 import type { Lesson as LessonData } from '../data/types';
 import { useCourse } from '../state/CourseContext';
 import { lessonPercent } from '../state/progress';
@@ -26,6 +28,8 @@ function Lesson({ lesson: l }: { lesson: LessonData }) {
   const reflection = state.reflections[l.id] ?? '';
   const done = state.done.includes(l.id);
   const next = lessons.find((other) => other.id === l.id + 1);
+  const spotlightVariants = spotlights[l.id];
+  const spotlight = spotlightVariants ? pick(spotlightVariants, audienceFor(state.profile)) : null;
 
   const checkAnswers = () => {
     if (l.questions.some((_, i) => saved[i] === undefined)) {
@@ -76,6 +80,13 @@ function Lesson({ lesson: l }: { lesson: LessonData }) {
               <p>{section.body}</p>
             </article>
           ))}
+          {spotlight && (
+            <aside className="spotlight" aria-labelledby={`spotlight-${l.id}`}>
+              <div className="eyebrow">SPOTLIGHT</div>
+              <h3 id={`spotlight-${l.id}`}>{spotlight.title}</h3>
+              <p>{spotlight.body}</p>
+            </aside>
+          )}
           <div className="note purple"><b>Worth remembering:</b> {l.takeaway}</div>
 
           <div className="activity">

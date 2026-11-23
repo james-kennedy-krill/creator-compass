@@ -24,12 +24,18 @@ export interface Lesson {
   questions: QuizQuestion[];
 }
 
-export interface Scenario {
+export interface ScenarioText {
   title: string;
   message: string;
+  /** Variants must keep the same number and order of options; answers are saved by index. */
   options: string[];
-  correct: number;
   why: string;
+}
+
+export interface Scenario extends ScenarioText {
+  correct: number;
+  /** Optional wording for girls or boys. The base text is used for everyone else. */
+  variants?: Partial<Record<'girl' | 'boy', Partial<ScenarioText>>>;
 }
 
 export interface Platform {

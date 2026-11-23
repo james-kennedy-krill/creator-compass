@@ -7,12 +7,13 @@ export function localDate(date: Date): string {
   return [date.getFullYear(), String(date.getMonth() + 1).padStart(2, '0'), String(date.getDate()).padStart(2, '0')].join('-');
 }
 
-export function learnerAge(state: CourseState): number | null {
-  const birthDate = state.profile?.birthDate;
-  const today = localDate(new Date());
+/** Age in whole years from a YYYY-MM-DD date, or null if the date is missing, malformed, or in the future. */
+export function ageFromBirthDate(birthDate: unknown, today = localDate(new Date())): number | null {
   if (typeof birthDate !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(birthDate) || birthDate > today) return null;
   return Number(today.slice(0, 4)) - Number(birthDate.slice(0, 4)) - Number(today.slice(5) < birthDate.slice(5));
 }
+
+export const learnerAge = (state: CourseState) => ageFromBirthDate(state.profile?.birthDate);
 
 export const lessonPercent = (state: CourseState) => Math.round((state.done.length / lessons.length) * 100);
 
