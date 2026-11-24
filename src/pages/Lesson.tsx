@@ -9,7 +9,6 @@ import { useCourse } from '../state/CourseContext';
 import { lessonPercent } from '../state/progress';
 
 const MIN_REFLECTION = 40;
-const PASSING_SCORE = 2;
 
 export default function LessonRoute() {
   const { id } = useParams();
@@ -25,6 +24,17 @@ function Lesson({ lesson: l }: { lesson: LessonData }) {
   const reflectionRef = useRef<HTMLTextAreaElement>(null);
   const saved = state.choices[l.id] ?? {};
   const grade = state.scores[l.id];
+  // Answers graded at the last check. Older saves without `checked` were graded on their current choices.
+  const checked: Record<string, number> = grade
+    ? typeof grade.checked === 'object' && grade.checked !== null ? grade.checked : saved
+    : {};
+  /** True once this question's checked answer is right; the answer is revealed only then. */
+  const solved = (qi: number) => saved[qi] !== undefined && checked[qi] === saved[qi] && saved[qi] === l.questions[qi].answer;
+  /** True when the current answer was checked and is wrong. Choosing a different answer clears it. */
+  const missed = (qi: number) => saved[qi] !== undefined && checked[qi] === saved[qi] && saved[qi] !== l.questions[qi].answer;
+  const total = l.questions.length;
+  const solvedCount = l.questions.filter((_, qi) => solved(qi)).length;
+  const quizPassed = solvedCount === total;
   const reflection = state.reflections[l.id] ?? '';
   const done = state.done.includes(l.id);
   const next = lessons.find((other) => other.id === l.id + 1);
@@ -33,22 +43,22 @@ function Lesson({ lesson: l }: { lesson: LessonData }) {
 
   const checkAnswers = () => {
     if (l.questions.some((_, i) => saved[i] === undefined)) {
-      toast('Answer all three questions first');
+      toast(`Answer all ${total} questions first`);
       return;
     }
     const score = l.questions.reduce((n, q, i) => n + (saved[i] === q.answer ? 1 : 0), 0);
-    dispatch({ type: 'gradeLesson', lessonId: l.id, score });
-    toast(score >= PASSING_SCORE ? 'Knowledge check passed' : 'Review the explanations and try again');
+    dispatch({ type: 'gradeLesson', lessonId: l.id, score, checked: { ...saved } });
+    toast(score === total ? 'Knowledge check passed. Now write your reflection.' : 'Pick a different answer for the ones marked, then check again');
   };
 
   const finish = () => {
+    if (!quizPassed) {
+      toast('Get every knowledge check question right first');
+      return;
+    }
     if (reflection.trim().length < MIN_REFLECTION) {
       toast(`Add at least ${MIN_REFLECTION} characters to your reflection`);
       reflectionRef.current?.focus();
-      return;
-    }
-    if ((grade?.score ?? 0) < PASSING_SCORE) {
-      toast('Pass the knowledge check (2 of 3) first');
       return;
     }
     dispatch({ type: 'completeLesson', lessonId: l.id });
@@ -71,7 +81,7 @@ function Lesson({ lesson: l }: { lesson: LessonData }) {
           <div className="story-card">
             <span className="eyebrow">WHY IT MATTERS</span>
             <h2 style={{ marginTop: 12, fontSize: 29 }}>{l.why}</h2>
-            <p className="muted small">Read each section, then complete your personal reflection and knowledge check.</p>
+            <p className="muted small">Read each section, check what you know, then put it into your own words.</p>
           </div>
           {l.sections.map((section, i) => (
             <article className="story-card" key={section.title}>
@@ -89,9 +99,66 @@ function Lesson({ lesson: l }: { lesson: LessonData }) {
           )}
           <div className="note purple"><b>Worth remembering:</b> {l.takeaway}</div>
 
+          <div className="quiz">
+            <span className="eyebrow">KNOWLEDGE CHECK</span>
+            <h3 style={{ marginTop: 10 }}>Show what you know</h3>
+            <p className="muted small">
+              Choose an answer for each question, then check. If one is marked “Not quite,” pick a different answer
+              and check again. Get all {total} right to move on to your reflection.
+            </p>
+            {l.questions.map((q, qi) => {
+              const isSolved = solved(qi);
+              const isMissed = missed(qi);
+              return (
+                <fieldset className="question" key={qi} disabled={isSolved}>
+                  <legend className="q-title">{qi + 1}. {q.prompt}</legend>
+                  {q.options.map((option, oi) => {
+                    const selected = saved[qi] === oi;
+                    const status = selected && isSolved ? ' correct' : selected && isMissed ? ' incorrect' : '';
+                    return (
+                      <label className={`choice${status}`} key={oi}>
+                        <input
+                          type="radio"
+                          name={`q${qi}`}
+                          value={oi}
+                          checked={selected}
+                          onChange={() => dispatch({ type: 'answerQuestion', lessonId: l.id, question: qi, choice: oi })}
+                        />
+                        <span>{option}</span>
+                      </label>
+                    );
+                  })}
+                  <div aria-live="polite">
+                    {isSolved && (
+                      <div className="feedback">
+                        <b>Correct.</b> {q.explanation}
+                      </div>
+                    )}
+                    {isMissed && (
+                      <div className="feedback warn">
+                        <b>Not quite.</b> Pick a different answer, then check again.
+                      </div>
+                    )}
+                  </div>
+                </fieldset>
+              );
+            })}
+            <div className="btn-row">
+              {!quizPassed && <button className="btn" onClick={checkAnswers}>Check answers</button>}
+              {grade && (
+                <span className={`pill ${quizPassed ? 'teal' : 'coral'}`}>
+                  {quizPassed ? '✓ All correct' : `${solvedCount} / ${total} correct so far`}
+                </span>
+              )}
+            </div>
+          </div>
+
           <div className="activity">
             <div className="eyebrow">YOUR MISSION / SHORT RESPONSE</div>
             <h3 style={{ marginTop: 10 }}>Put it into your own words</h3>
+            {!quizPassed && !reflection && (
+              <p className="small muted">Finish the knowledge check first. Then come back here to write.</p>
+            )}
             <p>{l.mission}</p>
             <label htmlFor={`reflection-${l.id}`} className="prompt-label">
               Your response (at least {MIN_REFLECTION} characters; no real names, addresses, or contact details)
@@ -109,56 +176,12 @@ function Lesson({ lesson: l }: { lesson: LessonData }) {
             </div>
           </div>
 
-          <div className="quiz">
-            <span className="eyebrow">KNOWLEDGE CHECK</span>
-            <h3 style={{ marginTop: 10 }}>Show what you know</h3>
-            <p className="muted small">
-              Three questions. Choose an answer for each, then check. You need {PASSING_SCORE} correct answers to
-              complete this lesson.
-            </p>
-            {l.questions.map((q, qi) => (
-              <div className="question" key={qi}>
-                <div className="q-title">{qi + 1}. {q.prompt}</div>
-                {q.options.map((option, oi) => {
-                  let status = '';
-                  if (grade && oi === q.answer) status = ' correct';
-                  else if (grade && saved[qi] === oi) status = ' incorrect';
-                  return (
-                    <label className={`choice${status}`} key={oi}>
-                      <input
-                        type="radio"
-                        name={`q${qi}`}
-                        value={oi}
-                        checked={saved[qi] === oi}
-                        onChange={() => dispatch({ type: 'answerQuestion', lessonId: l.id, question: qi, choice: oi })}
-                      />
-                      <span>{option}</span>
-                    </label>
-                  );
-                })}
-                {grade && (
-                  <div className={`feedback${saved[qi] === q.answer ? '' : ' warn'}`}>
-                    <b>{saved[qi] === q.answer ? 'Correct.' : 'Try a different answer.'}</b> {q.explanation}
-                  </div>
-                )}
-              </div>
-            ))}
-            <div className="btn-row">
-              <button className="btn" onClick={checkAnswers}>Check answers</button>
-              {grade && (
-                <span className={`pill ${grade.score >= PASSING_SCORE ? 'teal' : 'coral'}`}>
-                  {grade.score} / {l.questions.length} correct
-                </span>
-              )}
-            </div>
-          </div>
-
           <div className="card" style={{ background: '#eaf1e2' }}>
             <h3>{done ? 'This lesson is complete ✓' : 'Ready to finish?'}</h3>
             <p className="small">
               {done
                 ? 'You can revisit your reflection, but your completion stays saved.'
-                : 'Finish your reflection and pass the quiz. Then save your completion.'}
+                : 'Get every knowledge check question right and write your reflection. Then save your completion.'}
             </p>
             <div className="btn-row">
               <button className={`btn ${done ? 'btn-outline' : 'btn-light'}`} onClick={finish}>

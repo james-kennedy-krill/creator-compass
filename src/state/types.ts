@@ -28,7 +28,12 @@ export interface CourseState {
   done: number[];
   reflections: Record<string, string>;
   choices: Record<string, Record<string, number>>;
-  scores: Record<string, { score: number }>;
+  /**
+   * Last knowledge check per lesson. `checked` (added after version 1) holds the
+   * answers that were graded, so feedback is only shown for those; older saves
+   * without it were graded on their current `choices`.
+   */
+  scores: Record<string, { score: number; checked?: Record<string, number> }>;
   scenarios: Record<string, number>;
   /** Scenario indices where the best answer has been chosen at least once. Added after version 1; older saves derive it from `scenarios`. */
   labSolved: number[];

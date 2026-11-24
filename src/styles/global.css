@@ -87,6 +87,9 @@ input[type=text],input[type=email],input[type=date] {min-height:auto}
 .quiz {background:#fff;border:1px solid var(--line);border-radius:19px;padding:28px;margin:22px 0}
 .question {margin-bottom:25px;padding-bottom:23px;border-bottom:1px solid var(--line)}.question:last-of-type {border:none;padding:0;margin-bottom:15px}
 .question .q-title {font-weight:800;margin-bottom:12px}
+fieldset.question {border:0;border-bottom:1px solid var(--line);margin:0 0 25px;padding:0 0 23px;min-width:0}
+legend.q-title {display:block;padding:0;width:100%}
+.question:disabled .choice {cursor:default}.question:disabled .choice:hover {background:inherit}.question:disabled .choice.correct:hover {background:#ecf8ed}
 .choice {display:flex;gap:10px;align-items:flex-start;padding:11px 12px;margin:7px 0;border:1px solid #e0e4e7;border-radius:11px;cursor:pointer;font-size:14px}
 .choice:hover {background:#f9faf8}.choice input {margin:4px 3px 0 0;accent-color:#476347}.choice.correct {border-color:#74b28a;background:#ecf8ed}.choice.incorrect {border-color:#db9e8e;background:#fff1ec}
 .feedback {background:#edf4e9;border-radius:10px;padding:12px 14px;font-size:13px;color:#3e6244;margin:8px 0}.feedback.warn {background:#fff1e8;color:#8f4b2f}

@@ -8,7 +8,7 @@ type ListKey = 'portfolio' | 'videoChecks';
 export type CourseAction =
   | { type: 'setProfile'; profile: Profile }
   | { type: 'answerQuestion'; lessonId: number; question: number; choice: number }
-  | { type: 'gradeLesson'; lessonId: number; score: number }
+  | { type: 'gradeLesson'; lessonId: number; score: number; checked: Record<string, number> }
   | { type: 'completeLesson'; lessonId: number }
   | { type: 'setReflection'; lessonId: number; text: string }
   | { type: 'answerScenario'; index: number; choice: number }
@@ -33,12 +33,15 @@ function reducer(state: CourseState, action: CourseAction): CourseState {
     case 'setProfile':
       return { ...state, profile: action.profile };
     case 'answerQuestion': {
-      const { [action.lessonId]: _removed, ...scores } = state.scores;
+      // Keep the last check so answers already marked correct stay revealed.
       const choices = { ...state.choices[action.lessonId], [action.question]: action.choice };
-      return { ...state, choices: { ...state.choices, [action.lessonId]: choices }, scores };
+      return { ...state, choices: { ...state.choices, [action.lessonId]: choices } };
     }
     case 'gradeLesson':
-      return { ...state, scores: { ...state.scores, [action.lessonId]: { score: action.score } } };
+      return {
+        ...state,
+        scores: { ...state.scores, [action.lessonId]: { score: action.score, checked: action.checked } },
+      };
     case 'completeLesson':
       if (state.done.includes(action.lessonId)) return { ...state };
       return { ...state, done: [...state.done, action.lessonId].sort((a, b) => a - b) };

@@ -34,7 +34,9 @@
 
 ## Completion criteria (confirmed November 2026)
 
-- A lesson is complete when the reflection has at least 40 characters, the quiz score is at least two out of three, and the learner selects **Complete lesson**.
+- A lesson is complete when every knowledge check question is answered correctly, the reflection has at least 40 characters, and the learner selects **Complete lesson**. Lessons already completed under the earlier two-of-three rule stay complete.
+- Lesson order: the knowledge check comes before the written reflection (owner decision, November 2026).
+- Checking answers marks wrong ones without revealing the right answer. The learner picks again and rechecks; only a correct answer shows the explanation and locks that question. Answers that were checked are saved with the score (`scores[id].checked`, added after version 1), so feedback appears only for answers that were actually checked.
 - The Final Project shows **Ready to review together** only when all of these are done. It lists each one with progress and a link to the activity:
   - all eight lessons completed
   - all seven Safety Lab scenarios solved, meaning the best answer was chosen at least once (retries are unlimited, and choosing a different answer later doesn't undo it)
