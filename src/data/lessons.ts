@@ -24,7 +24,7 @@ export const lessons: Lesson[] = [
       }
     ],
     "takeaway": "You can own your creative choices even when you cannot control every copy.",
-    "mission": "Describe three ways a public video of your work might reach people you did not intend, and one reason you might decide not to post a video.",
+    "mission": "Imagine you filmed a dance clip and want your friends to see it. If you post it publicly, who else might see it, and how could it reach them? In a few sentences, explain whether you'd still post it publicly and why.",
     "questions": [
       {
         "prompt": "What changes when a video becomes public?",
